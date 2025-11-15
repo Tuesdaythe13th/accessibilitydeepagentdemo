@@ -1,0 +1,8 @@
+{
+  "name": "Connect Flow AI",
+  "description": "An AI-powered communication platform featuring real-time ASL interpretation and inclusive design, enabling seamless and limitless access for everyone. Engage in natural conversations with a cutting-edge AI assistant.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone"
+  ]
+}
