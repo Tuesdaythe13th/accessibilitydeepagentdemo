@@ -92,6 +92,7 @@ const SettingCard: React.FC<{ title: string; children: React.ReactNode;}> = ({ t
 
 interface DashboardProps {
   onStartSession: () => void;
+  onPreviewAbTest: () => void;
   isHighContrast: boolean;
   onToggleHighContrast: () => void;
   underlineLinks: boolean;
@@ -102,6 +103,7 @@ interface DashboardProps {
 
 const Dashboard: React.FC<DashboardProps> = ({ 
     onStartSession, 
+    onPreviewAbTest,
     isHighContrast, 
     onToggleHighContrast,
     underlineLinks,
@@ -188,12 +190,20 @@ const Dashboard: React.FC<DashboardProps> = ({
                     </div>
                 </div>
 
-                <button 
-                    onClick={onStartSession}
-                    className="mt-8 px-10 py-4 rounded-full text-white font-semibold text-lg transition-all duration-300 border-2 border-purple-500/50 bg-purple-500/20 shadow-[0_4px_15px_rgba(168,85,247,0.2),_inset_0_1px_1px_rgba(255,255,255,0.2)] hover:bg-purple-500/30 hover:shadow-[0_6px_20px_rgba(168,85,247,0.4),_inset_0_1px_1px_rgba(255,255,255,0.2)] hover:translate-y-1 active:shadow-[inset_0_2px_4px_rgba(0,0,0,0.5)] transform"
-                >
-                    Launch Connect Flow
-                </button>
+                <div className="flex items-center justify-center flex-wrap gap-4 mt-8">
+                    <button 
+                        onClick={onPreviewAbTest}
+                        className="px-8 py-4 rounded-full text-white font-semibold text-lg transition-all duration-300 border-2 border-cyan-500/50 bg-cyan-500/20 shadow-[0_4px_15px_rgba(71,170,189,0.2),_inset_0_1px_1px_rgba(255,255,255,0.2)] hover:bg-cyan-500/30 hover:shadow-[0_6px_20px_rgba(71,170,189,0.4),_inset_0_1px_1px_rgba(255,255,255,0.2)] hover:-translate-y-1 active:shadow-[inset_0_2px_4px_rgba(0,0,0,0.5)] transform"
+                    >
+                        Preview A/B Test
+                    </button>
+                    <button 
+                        onClick={onStartSession}
+                        className="px-10 py-4 rounded-full text-white font-semibold text-lg transition-all duration-300 border-2 border-purple-500/50 bg-purple-500/20 shadow-[0_4px_15px_rgba(168,85,247,0.2),_inset_0_1px_1px_rgba(255,255,255,0.2)] hover:bg-purple-500/30 hover:shadow-[0_6px_20px_rgba(168,85,247,0.4),_inset_0_1px_1px_rgba(255,255,255,0.2)] hover:-translate-y-1 active:shadow-[inset_0_2px_4px_rgba(0,0,0,0.5)] transform"
+                    >
+                        Launch Connect Flow
+                    </button>
+                </div>
             </div>
         </div>
     );

@@ -5,8 +5,9 @@ import PermissionDeniedScreen from './components/PermissionDeniedScreen';
 import PostSessionPage from './components/PostSessionPage';
 import { SessionData } from './types';
 import Dashboard from './components/Dashboard';
+import AbTestDemoPage from './components/AbTestDemoPage';
 
-type AppState = 'landing' | 'dashboard' | 'connecting' | 'connected' | 'error' | 'permissionDenied' | 'sessionEnded';
+type AppState = 'landing' | 'dashboard' | 'abTestDemo' | 'connecting' | 'connected' | 'error' | 'permissionDenied' | 'sessionEnded';
 
 const App: React.FC = () => {
   const [appState, setAppState] = useState<AppState>('landing');
@@ -19,6 +20,10 @@ const App: React.FC = () => {
 
   const handleStartDemo = () => {
     setAppState('dashboard');
+  };
+
+  const handlePreviewAbTest = () => {
+    setAppState('abTestDemo');
   };
 
   const handleStartSession = () => {
@@ -54,6 +59,7 @@ const App: React.FC = () => {
         case 'dashboard':
             return <Dashboard 
                         onStartSession={handleStartSession} 
+                        onPreviewAbTest={handlePreviewAbTest}
                         isHighContrast={isHighContrast}
                         onToggleHighContrast={() => setIsHighContrast(p => !p)}
                         underlineLinks={underlineLinks}
@@ -61,6 +67,8 @@ const App: React.FC = () => {
                         fontSize={fontSize}
                         onSetFontSize={setFontSize}
                     />;
+        case 'abTestDemo':
+            return <AbTestDemoPage onReturnToDashboard={handleStartDemo} />;
         case 'permissionDenied':
             return <PermissionDeniedScreen />;
         case 'sessionEnded':
